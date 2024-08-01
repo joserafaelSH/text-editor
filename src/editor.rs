@@ -27,7 +27,7 @@ impl Editor {
                 );
             }
 
-            if byte_char == 'q' {
+            if byte_aux.eq(&017) {
                 break;
             }
         }
@@ -35,11 +35,10 @@ impl Editor {
     }
 
     pub fn draw_rows(&self) {
-        let size: (u16, u16);
-        match crossterm::terminal::size() {
-            Ok(result) => size = result,
+        let size: (u16, u16) = match crossterm::terminal::size() {
+            Ok(result) => result,
             Err(err) => panic!("{err}"),
-        }
+        };
 
         //let colum = size.0;
         let row = size.1;
